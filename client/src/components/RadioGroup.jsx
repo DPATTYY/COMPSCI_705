@@ -6,8 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import PropTypes from 'prop-types';
 
-function RadioButtonsGroup({ 
-    label, 
+function RadioButtonsGroup({  
     options, 
     value, 
     onChange, 
@@ -18,16 +17,6 @@ function RadioButtonsGroup({
 }) {
   return (
     <FormControl>
-      {label && 
-        <FormLabel 
-        id={`${name}-label`}
-        sx={{ 
-            color: labelColour,
-            '&.Mui-focused': { color: labelColour }
-        }}
-        >
-            {label}
-        </FormLabel>}
       <RadioGroup
         aria-labelledby={`${name}-label`}
         value={value}

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import './QuestionnairePage.css';
 import LinearProgressWithLabel from '../components/ProgressBar';
 import RadioGroup from '../components/RadioGroup';
+import {Button} from '@mui/material';
 
 
 
@@ -25,15 +26,13 @@ function QuestionnairePage() {
   return (
     <div id="survey_superdiv">
 
-        <div className="left-aligned">
+        <div className="left-aligned bottom-margin">
           <Link to="/">
-              <button>
-                &lt; Quit Survey
-              </button>
+              <Button variant="outlined" color="secondary">Quit Survey</Button>
           </Link>
         </div>
 
-        <div className="center-aligned">
+        <div className="center-aligned bottom-margin progress-bar">
           <LinearProgressWithLabel value={30} />
         </div>
 
@@ -41,16 +40,15 @@ function QuestionnairePage() {
         <div className="left-aligned subheading"> Over the last two weeks, have you felt nervous, anxious, or on edge? </div>
 
         <div className="center-aligned flex-container">
-          <div className="face-cam">face-cam</div>
           <div className="input-widgets">
             <RadioGroup
-                label="How often do you feel anxious?"
                 options={anxietyOptions}
                 value={selectedAnswer}
                 onChange={handleAnswerChange}
                 name="anxiety-question"
             />
           </div>
+          <div className="face-cam">face-cam</div>
         </div>
 
           
