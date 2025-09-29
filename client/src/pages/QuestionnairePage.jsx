@@ -1,7 +1,27 @@
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import './QuestionnairePage.css';
+import LinearProgressWithLabel from '../components/ProgressBar';
+import RadioGroup from '../components/RadioGroup';
+
+
 
 function QuestionnairePage() {
+
+    const [selectedAnswer, setSelectedAnswer] = useState('');
+
+    const anxietyOptions = [
+    { value: 'not-at-all', label: 'Not at all' },
+    { value: 'rarely', label: 'Rarely' },
+    { value: 'sometimes', label: 'Sometimes' },
+    { value: 'most-time', label: 'Most of the time' },
+    { value: 'all-time', label: 'All the time' }
+    ];
+
+    const handleAnswerChange = (event) => {
+    setSelectedAnswer(event.target.value);
+    };
+
   return (
     <div id="survey_superdiv">
 
@@ -13,7 +33,9 @@ function QuestionnairePage() {
           </Link>
         </div>
 
-        <div className="center-aligned"> -----progress bar here-----</div>
+        <div className="center-aligned">
+          <LinearProgressWithLabel value={30} />
+        </div>
 
         <div className="left-aligned heading"> Question 1: Anxiety</div>
         <div className="left-aligned subheading"> Over the last two weeks, have you felt nervous, anxious, or on edge? </div>
@@ -21,20 +43,13 @@ function QuestionnairePage() {
         <div className="center-aligned flex-container">
           <div className="face-cam">face-cam</div>
           <div className="input-widgets">
-            <input type="radio" id="not_at_all" name="answer" value="Not at all"></input>
-            <label for="not_at_all">Not at all</label><br></br>
-
-            <input type="radio" id="rarely" name="answer" value="Rarely"></input>
-            <label for="rarely">Rarely</label><br></br>
-
-            <input type="radio" id="sometimes" name="answer" value="Sometimes"></input>
-            <label for="sometimes">Sometimes</label><br></br>
-
-            <input type="radio" id="most_of_the_time" name="answer" value="Most of the time"></input>
-            <label for="most_of_the_time">Most of the time</label><br></br>
-
-            <input type="radio" id="all_the_time" name="answer" value="All the time"></input>
-            <label for="all_the_time">All the time</label><br></br>
+            <RadioGroup
+                label="How often do you feel anxious?"
+                options={anxietyOptions}
+                value={selectedAnswer}
+                onChange={handleAnswerChange}
+                name="anxiety-question"
+            />
           </div>
         </div>
 
