@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom';
 import './QuestionnairePage.css';
 import LinearProgressWithLabel from '../components/ProgressBar';
 import RadioGroup from '../components/RadioGroup';
-import {Button} from '@mui/material';
+import {Button, IconButton} from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
 
 
 
@@ -55,19 +58,19 @@ function QuestionnairePage() {
         
 
         <div className="center-aligned flex-container">
-          <button>
-              &lt; Previous
-          </button>
+          <IconButton>
+              <ArrowBackIcon />
+          </IconButton>
 
           <Link to="/completion">
-            <button>
+            <button className="submit-button" disabled={!selectedAnswer}>
                 Submit Survey
             </button>
           </Link>
 
-          <button>
-              Next &gt;
-          </button>
+          <IconButton>
+              <ArrowForwardIcon />
+          </IconButton>
         </div>
 
     </div>
