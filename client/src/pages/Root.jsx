@@ -1,6 +1,14 @@
 import { Outlet } from 'react-router-dom';
 
 function Root() {
+
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  if (isHomePage) {
+    return <Outlet />;
+  }
+
   return (
     <div>
       <header>
